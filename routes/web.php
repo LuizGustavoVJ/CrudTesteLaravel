@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route:: prefix('admin')->namespace('Admin')->group(function(){
+
+    Route::prefix('questoes')->name('questoes.')->group(function(){
+
+        Route::get('/create', 'QuestoesController@create')->name('create');
+        Route::post('/store', 'QuestoesController@store')->name('store');
+    });
+});
