@@ -1,4 +1,5 @@
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+@extends('layouts.app')
+@section('content')
 <form action="{{route('testes.update', ['testis' => $teste->id])}}" method="POST">
     @csrf
     @method("PUT")
@@ -26,12 +27,6 @@
     <button class="btn btn-lg btn-success">Alterar Teste</button>
 
 </form>
-<hr>
-
-<form action="{{route('testes.destroy', ['testis' => $teste->id])}}" method="POST">
-    @csrf
-    @method("DELETE")
-
-    <button class="btn btn-lg btn-danger">Remover Teste</button>
-
 </form>
+
+@endsection

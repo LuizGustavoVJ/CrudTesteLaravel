@@ -10,17 +10,6 @@
         </div>
     @endif
     </div>
-<!--
-    <div class="form-group col-md-3">
-        <label for="genero_id">Teste: </label>
-        <select name="teste_id" id="teste_id" class="form-control">
-
-            @foreach($testes as $teste)
-                <option value="{{$teste->id}}">{{ $teste->nome}}</option>
-            @endforeach
-
-        </select><br><br>
-    </div> -->
 
     <div class="form-group">
         <label for="enunciado">Enunciado:</label>
@@ -77,12 +66,5 @@
     <button class="btn btn-lg btn-success">Atualizar Questao</button>
 
 </form>
-<hr>
 
-<form action="{{route('questoes.destroy', ['questo' => $questao->id])}}" method="POST">
-    @csrf
-    @method("DELETE")
-
-    <button class="btn btn-lg btn-danger">Remover Questao</button>
-
-</form>
+@endsection

@@ -13,7 +13,7 @@ class QuestoesController extends Controller
 
     public function index()
     {
-       Questao::all();
+        return view('questoes.index')->withQuestoes(Questao::paginate(5));
     }
 
     public function create()
@@ -35,7 +35,7 @@ class QuestoesController extends Controller
 
     public function show($id)
     {
-        dd(Questao::findOrFail($id));
+        Questao::findOrFail($id);
     }
 
     public function edit($id)
@@ -51,20 +51,22 @@ class QuestoesController extends Controller
         $data = $request->all();
         $questao = Questao::findOrFail($id);
 
-        Session::flash('mensagem_sucesso', 'Questão alterada com Sucesso!');
-
         $questao->update($data);
 
-        return back();
+        Session::flash('mensagem_sucesso', 'Questão alterada com Sucesso!');
+
+        return redirect()->route('questoes.index');
     }
 
     public function destroy($id)
     {
         $questao = Questao::findOrFail($id);
 
-        Session::flash('mensagem_sucesso', 'Questão deletada com Sucesso!');
+        $questao->delete();
 
-        dd($questao->delete());
+        Session::flash('mensagem_sucesso', 'Questão excluída com Sucesso!');
+
+        return back();
 
     }
 }

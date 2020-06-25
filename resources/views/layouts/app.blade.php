@@ -9,13 +9,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Gerenciador do Trabalho</title>
+    <title>Gerenciador de Testes</title>
   </head>
 
   <body>
       <nav class="navbar navbar-expanded-lg  navbar-ligth bg-ligth">
           <a href="/" class=" navbar-brand ">Trabalho Laravel </a>
-          <button class="navbar-togller"><span class="navbar-togller-icon"></span></button>
+          <button class="navbar-togller">
+              <span class="navbar-togller-icon"></span>
+          </button>
           <div class="collapse navbar-collapse">
               <ul class="navbar-nav">
                   <li class="nav-item active">
@@ -28,7 +30,7 @@
     </nav>
 
     <div class="container">
-        @yield('content');
+        @yield('content')
     </div>
 
   </body>

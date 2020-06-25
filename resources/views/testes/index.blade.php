@@ -1,12 +1,9 @@
 @extends('layouts.app')
 @section('content')
-<<<<<<< HEAD
-=======
 
->>>>>>> 0a8fda4824147d98641493b08709a401fcec1f30
 <div class="row">
-    <div class="col-sm1-2">
-        <a href="{{route('testes.create')}}" class="btn btn-seccess flot-right"></a>
+    <div class="col-sm-12">
+        <a href="{{route('testes.create')}}" class="btn btn-success float-right">Criar Testes</a>
         <h2>Testes do Trabalho</h2>
         <div class="clearfix"></div>
     </div>
@@ -22,12 +19,34 @@
             <th>Ações</th>
         </tr>
     </thead>
+    <tbody>
+        @forelse($testes as $teste)
+        <tr>
+            <td>{{$teste->id}}</td>
+            <td>{{$teste->nome}}</td>
+            <td>{{$teste->pontuacaoMinima}}</td>
+            <td>{{date('d/m/Y H:i:s', strtotime($teste->created_at))}}</td>
+            <td>
+                <div class="btn-group">
+                    <a href="{{route('testes.edit', ['testis' => $teste->id])}}" class="btn btn-sm btn-primary">Editar</a>
+                    <a href="{{route('testes.show', ['testis' => $teste->id])}}" class="btn btn-sm btn-primary">Exibir</a>
+                    <form action="{{route('testes.destroy', ['testis' => $teste->id])}}" method="POST">
+                        @csrf
+                        @method("DELETE")
+
+                        <button class="btn btn-sm btn-danger">Excluir</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        @empty
+        <tr>
+            <td colspan="5" >Nenhum registro encontrado</td>
+        </tr>
+        @endforelse
+    </tbody>
 </table>
-<<<<<<< HEAD
+{{$testes->links()}}
 @endsection
 
-=======
-
-@endsection
->>>>>>> 0a8fda4824147d98641493b08709a401fcec1f30
 

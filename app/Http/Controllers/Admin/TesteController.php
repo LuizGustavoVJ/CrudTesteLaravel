@@ -3,17 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Questao;
 use App\Teste;
-use App\Post;
-use Carbon\Traits\Test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class TesteController extends Controller
 {
+    private $teste;
+
+    public function construct(Teste $teste)
+    {
+        $this->teste = $teste;
+    }
+
     public function index()
     {
-       Teste::all();
+        return view('testes.index')->withTestes(Teste::paginate(5));
     }
 
     public function create()
@@ -29,9 +35,9 @@ class TesteController extends Controller
      */
     public function store(Request $request)
     {
-        $teste = $request->all();
+        $testes = $request->all();
 
-        Teste::create($teste);
+        Teste::create($testes);
 
         Session::flash('mensagem_sucesso', 'Teste cadastrado com Sucesso!');
 
@@ -40,7 +46,8 @@ class TesteController extends Controller
 
     public function show($id)
     {
-        dd(Teste::findOrFail($id));
+        $questoes = Questao::all();
+        return view('testes.show')->withQuestoes($questoes);
     }
 
     public function edit($id)
@@ -54,20 +61,22 @@ class TesteController extends Controller
         $data = $request->all();
         $teste = Teste::findOrFail($id);
 
-        Session::flash('mensagem_sucesso', 'Teste alterado com Sucesso!');
-
         $teste->update($data);
 
-        return back();
+        Session::flash('mensagem_sucesso', 'Teste alterado com Sucesso!');
+
+        return redirect()->route('testes.index');
     }
 
     public function destroy($id)
     {
         $teste = Teste::findOrFail($id);
 
-        Session::flash('mensagem_sucesso', 'Teste deletado com Sucesso!');
+        $teste->delete();
 
-        dd($teste->delete());
+        Session::flash('mensagem_sucesso', 'Teste excluido com Sucesso!');
+
+        return back();
 
     }
 

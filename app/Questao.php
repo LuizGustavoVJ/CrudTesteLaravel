@@ -15,4 +15,9 @@ class Questao extends Model
         'respostaE',
         'valorQuestao'
     ];
+
+    public function teste()
+    {
+        return $this->belongsTo(Teste::class);
+    }
 }

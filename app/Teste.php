@@ -9,4 +9,9 @@ class Teste extends Model
         'nome',
         'pontuacaoMinima'
     ];
+
+    public function questoes()
+    {
+        return $this->hasMany(Questao::class);
+    }
 }
