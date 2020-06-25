@@ -32,4 +32,39 @@ class QuestoesController extends Controller
 
         return back();
     }
+
+    public function show($id)
+    {
+        dd(Questao::findOrFail($id));
+    }
+
+    public function edit($id)
+    {
+        $testes = Teste::all();
+        $questao = Questao::findOrFail($id);
+
+        return view('questoes.edit', compact('testes'))->withQuestao($questao);
+    }
+
+    public function update($id, Request $request)
+    {
+        $data = $request->all();
+        $questao = Questao::findOrFail($id);
+
+        Session::flash('mensagem_sucesso', 'Questão alterada com Sucesso!');
+
+        $questao->update($data);
+
+        return back();
+    }
+
+    public function destroy($id)
+    {
+        $questao = Questao::findOrFail($id);
+
+        Session::flash('mensagem_sucesso', 'Questão deletada com Sucesso!');
+
+        dd($questao->delete());
+
+    }
 }
