@@ -2,6 +2,25 @@
 <form action="{{route('questoes.store')}}" method="post">
     @csrf
 
+    <div class="form-group col-md-6">
+    @if(Session::has('mensagem_sucesso'))
+        <div class="alert alert-success">
+            {{Session::get('mensagem_sucesso')}}
+        </div>
+    @endif
+    </div>
+
+    <div class="form-group col-md-3">
+        <label for="genero_id">Teste: </label>
+        <select name="teste_id" id="teste_id" class="form-control">
+
+            @foreach($testes as $teste)
+                <option value="{{$teste->id}}">{{ $teste->nome}}</option>
+            @endforeach
+
+        </select><br><br>
+    </div>
+
     <div class="form-group">
         <label for="enunciado">Enunciado:</label>
         <textarea name="enunciado" id="enunciado" cols="30" rows="10" class="from-control" {{old('enunciado')}}></textarea>
@@ -54,8 +73,6 @@
     </div>
     <br>
 
-    <input type="hidden" name="id" value="<?= $questao->id??'' ?>">
-
-    <button type="button" class="btn btn-success">Cadastrar Pergunta</button>
+    <button class="btn btn-lg btn-success">Cadastrar Questão</button>
 
 </form>

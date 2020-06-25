@@ -3,25 +3,33 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Questao;
+use App\Teste;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class QuestoesController extends Controller
 {
+
+    public function index()
+    {
+       Questao::all();
+    }
+
     public function create()
     {
-        return view('questoes.create');
+        $testes = Teste::all();
+        return view('questoes.create', compact('testes'));
     }
 
     public function store(Request $request)
     {
-        echo "Questão armazenada com sucesso!";
+        $questoes = $request->all();
 
-        if (empty($request->enunciado) or empty($request->respostaA) or empty($request->respostaB)
-         or empty($request->respostaC) or empty($request->respostaD) or empty($request->respostaE)
-         or empty($request->correta) or empty($request->valorQuestao))
-        {
-            return back()->withInput();
-        }
+        Questao::create($questoes);
 
+        Session::flash('mensagem_sucesso', 'Questão cadastrada com Sucesso!');
+
+        return back();
     }
 }

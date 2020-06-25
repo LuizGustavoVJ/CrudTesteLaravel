@@ -19,16 +19,7 @@ Route::get('/', function () {
 
 Route:: prefix('admin')->namespace('Admin')->group(function(){
 
-    Route::prefix('questoes')->name('questoes.')->group(function(){
+    Route::resource('testes', 'TesteController');
 
-        Route::get('/create', 'QuestoesController@create')->name('create');
-        Route::post('/store', 'QuestoesController@store')->name('store');
-    });
-
-    Route::prefix('teste')->name('teste.')->group(function(){
-
-        Route::get('/create', 'TesteController@create')->name('create');
-        Route::post('/store', 'TesteController@store')->name('store');
-    });
-    
+    Route::resource('questoes', 'QuestoesController');
 });

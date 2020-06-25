@@ -1,5 +1,14 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<form action="{{route('teste.store')}}" method="post">
+<form action="{{route('testes.store')}}" method="post">
+@csrf
+
+    <div class="form-group col-md-6">
+        @if(Session::has('mensagem_sucesso'))
+            <div class="alert alert-success">
+                {{Session::get('mensagem_sucesso')}}
+            </div>
+        @endif
+    </div>
 
     <div class="form-group col-md-6">
         <label for="nome">Nome:</label>
@@ -13,8 +22,6 @@
     </div>
     <br>
 
-    <input type="hidden" name="id" value="<?= $valorTeste->id??'' ?>">
-
-    <button type="button" class="btn btn-success">Cadastrar Teste</button>
+    <button class="btn btn-lg btn-success">Cadastrar Teste</button>
 
 </form>
