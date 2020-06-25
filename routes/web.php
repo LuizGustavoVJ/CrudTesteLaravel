@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route:: prefix('admin')->namespace('Admin')->group(function(){
 
-    Route::resource('testes', 'TesteController');
+    Route::resource('/testes', 'TesteController');
 
-    Route::resource('questoes', 'QuestoesController');
+    Route::resource('/questoes', 'QuestoesController');
 });
