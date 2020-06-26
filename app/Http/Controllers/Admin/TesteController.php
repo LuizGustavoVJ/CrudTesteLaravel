@@ -46,7 +46,17 @@ class TesteController extends Controller
 
     public function show($id)
     {
-        $questoes = Questao::all();
+        $teste = Teste::where('id', $id)->first();;
+        $questoes = $teste->questoes()->get();
+
+        foreach($questoes as $questao)
+        {
+            $questao->id;
+            $questao->enunciado;
+            $questao->valorQuestao;
+            $questao->created_at;
+        }
+
         return view('testes.show')->withQuestoes($questoes);
     }
 

@@ -12,6 +12,6 @@ class Teste extends Model
 
     public function questoes()
     {
-        return $this->hasMany(Questao::class);
+        return $this->hasMany(Questao::class, 'teste_id');
     }
 }
