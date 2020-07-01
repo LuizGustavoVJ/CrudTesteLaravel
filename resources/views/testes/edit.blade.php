@@ -28,11 +28,5 @@
 
 </form>
 <hr>
-
-<form action="{{route('testes.destroy', ['testis' => $teste->id])}}" method="POST">
-                        @csrf
-                        @method("DELETE")
-
-                        <button class="btn btn-sm btn-danger">Excluir</button>
-</form>
+<a href="{{route('testes.index')}}" class="btn btn-primary float-left">Voltar</a>
 @endsection

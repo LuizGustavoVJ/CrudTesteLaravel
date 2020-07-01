@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <form action="{{route('questoes.update', ['questo' => $questao->id])}}" method="POST">
     @csrf
@@ -63,13 +65,8 @@
     </div>
     <br>
 
-    <button class="btn btn-lg btn-success">Atualizar Questao</button>
+    <button class="btn btn-lg btn-success">Atualizar Questão</button>
 </form>
 <hr>
-<form action="{{route('questoes.destroy', ['questo' => $questao->id])}}" method="POST">
-                    @csrf
-                    @method("DELETE")
-                    <button class="btn btn-sm btn-danger">Excluir</button>
-</form>
-
+<a href="{{route('questoes.index')}}" class="btn btn-primary float-left">Voltar</a>
 @endsection
