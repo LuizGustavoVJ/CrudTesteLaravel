@@ -39,9 +39,7 @@ class TesteController extends Controller
     {
         $data = $request->all();
 
-        $user = Auth::user();
-
-        $teste = $user->teste()->create($data);
+        Teste::create($data);
 
         Session::flash('mensagem_sucesso', 'Teste cadastrado com Sucesso!');
 
