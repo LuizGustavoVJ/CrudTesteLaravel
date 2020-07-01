@@ -66,7 +66,6 @@ class QuestoesController extends Controller
 
         Session::flash('mensagem_sucesso', 'Questão excluída com Sucesso!');
 
-        return back();
-
+        return redirect()->route('questoes.index');
     }
 }

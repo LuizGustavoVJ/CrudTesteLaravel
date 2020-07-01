@@ -7,6 +7,7 @@ class Teste extends Model
 {
     protected $fillable = [
         'nome',
+        'user_id',
         'pontuacaoMinima'
     ];
 
@@ -14,4 +15,10 @@ class Teste extends Model
     {
         return $this->hasMany(Questao::class, 'teste_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

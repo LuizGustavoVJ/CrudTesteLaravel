@@ -22,6 +22,7 @@ class CreateTableQuestaos extends Migration
             $table->string('respostaC');
             $table->string('respostaD');
             $table->string('respostaE');
+            $table->string('correta');
             $table->string('valorQuestao');
             $table->timestamps();
 

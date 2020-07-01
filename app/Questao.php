@@ -13,11 +13,12 @@ class Questao extends Model
         'respostaC',
         'respostaD',
         'respostaE',
+        'correta',
         'valorQuestao'
     ];
 
     public function teste()
     {
-        return $this->belongsTo(Teste::class);
+        return $this->hasOne(Teste::class);
     }
 }

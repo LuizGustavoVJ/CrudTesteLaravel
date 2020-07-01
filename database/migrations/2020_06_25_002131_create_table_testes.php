@@ -16,8 +16,11 @@ class CreateTableTestes extends Migration
         Schema::create('testes', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->unsignedbigInteger('user_id')->nullable();
             $table->string('pontuacaoMinima');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on ('users')->onDelete('set null');
         });
     }
 

@@ -1,5 +1,17 @@
 @extends('layouts.app')
 @section('content')
+<div class="row">
+    <div class="col-sm-12">
+        <li>
+            <a href="{{route('questoes.create')}}" class="btn btn-success flot-right">Cadastrar Questão</a>
+        </li>
+        <li>
+            <a href="{{route('testes.index')}}" class="btn btn-primary float-right">Voltar</a>
+        </li>
+
+        <div class="clear-fix"></div>
+    </div>
+</div>
 
 <table class=" table table-striped">
     <thead>

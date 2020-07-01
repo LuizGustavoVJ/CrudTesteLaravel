@@ -27,6 +27,12 @@
     <button class="btn btn-lg btn-success">Alterar Teste</button>
 
 </form>
-</form>
+<hr>
 
+<form action="{{route('testes.destroy', ['testis' => $teste->id])}}" method="POST">
+                        @csrf
+                        @method("DELETE")
+
+                        <button class="btn btn-sm btn-danger">Excluir</button>
+</form>
 @endsection

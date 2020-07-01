@@ -64,7 +64,12 @@
     <br>
 
     <button class="btn btn-lg btn-success">Atualizar Questao</button>
-
+</form>
+<hr>
+<form action="{{route('questoes.destroy', ['questo' => $questao->id])}}" method="POST">
+                    @csrf
+                    @method("DELETE")
+                    <button class="btn btn-sm btn-danger">Excluir</button>
 </form>
 
 @endsection

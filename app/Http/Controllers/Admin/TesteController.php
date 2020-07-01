@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Questao;
 use App\Teste;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class TesteController extends Controller
 {
@@ -35,9 +37,11 @@ class TesteController extends Controller
      */
     public function store(Request $request)
     {
-        $testes = $request->all();
+        $data = $request->all();
 
-        Teste::create($testes);
+        $user = Auth::user();
+
+        $teste = $user->teste()->create($data);
 
         Session::flash('mensagem_sucesso', 'Teste cadastrado com Sucesso!');
 
