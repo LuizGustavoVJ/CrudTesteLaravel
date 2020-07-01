@@ -2,12 +2,8 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12">
-        <li>
             <a href="{{route('questoes.create')}}" class="btn btn-success float-right">Cadastrar Questões</a>
-        </li>
-        <li>
             <a href="{{route('home')}}" class="btn btn-primary float-right">Voltar</a>
-        </li>
 
         <h2>Questões dos Testes</h2>
 
@@ -36,9 +32,7 @@
             <td>{{date('d/m/Y H:i:s', strtotime($questao->created_at))}}</td>
             <td>
                 <div class="btn-group">
-                    <li>
-                        <a href="{{route('questoes.edit', ['questo' => $questao->id])}}" class="btn btn-sm btn-primary">Editar</a>
-                    </li>
+                    <a href="{{route('questoes.edit', ['questo' => $questao->id])}}" class="btn btn-sm btn-primary">Editar</a>
                     <form action="{{route('questoes.destroy', ['questo' => $questao->id])}}" method="POST">
                         @csrf
                         @method("DELETE")

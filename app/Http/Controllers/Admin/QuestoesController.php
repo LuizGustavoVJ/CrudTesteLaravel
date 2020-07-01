@@ -30,7 +30,7 @@ class QuestoesController extends Controller
 
         Session::flash('mensagem_sucesso', 'Questão cadastrada com Sucesso!');
 
-        return back();
+        return redirect()->route('questoes.index');
     }
 
     public function show($id)

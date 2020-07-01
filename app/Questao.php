@@ -19,6 +19,6 @@ class Questao extends Model
 
     public function teste()
     {
-        return $this->hasOne(Teste::class);
+        return $this->belongsTo(Teste::class);
     }
 }

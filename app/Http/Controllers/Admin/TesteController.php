@@ -45,7 +45,7 @@ class TesteController extends Controller
 
         Session::flash('mensagem_sucesso', 'Teste cadastrado com Sucesso!');
 
-        return back();
+        return redirect()->route('testes.index');
     }
 
     public function show($id)
@@ -90,7 +90,7 @@ class TesteController extends Controller
 
         Session::flash('mensagem_sucesso', 'Teste excluido com Sucesso!');
 
-        return back();
+        return redirect()->route('testes.index');
 
     }
 
