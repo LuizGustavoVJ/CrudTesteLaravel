@@ -29,7 +29,7 @@
     <br>
 
     <div class="form-group col-md-6">
-        <label for="respostaA">Resposta A</label>
+        <label for="respostaA">Resposta A:</label>
         <input type="text" name="respostaA" id="respostaA" class="form-control" value="{{old('respostaA')}}">
     </div>
 

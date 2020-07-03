@@ -27,6 +27,10 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('/testes', 'TesteController')->middleware('auth');
 
         Route::resource('/questoes', 'QuestoesController')->middleware('auth');
+
+        
+        Route::get('respostaTestes/{teste}', "RespostaTestesController@index")->name('respostaTeste');
+
     });
 });
 

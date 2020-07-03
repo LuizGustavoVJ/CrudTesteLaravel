@@ -31,7 +31,8 @@
                 <div class="btn-group">
                         <a href="{{route('testes.edit', ['testis' => $teste->id])}}" class="btn btn-sm btn-primary">Editar</a>
                         <a href="{{route('testes.show', ['testis' => $teste->id])}}" class="btn btn-sm btn-primary">Exibir Questões</a>
-                    <form action="{{route('testes.destroy', ['testis' => $teste->id])}}" method="POST">
+                        <a href="{{route('respostaTeste', $teste->id)}}" class="btn btn-sm btn-success">Responder Teste</a>
+                        <form action="{{route('testes.destroy', ['testis' => $teste->id])}}" method="POST">
                         @csrf
                         @method("DELETE")
                         <button class="btn btn-sm btn-danger">Excluir</button>
