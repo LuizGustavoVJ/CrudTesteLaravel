@@ -2,8 +2,7 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12">
-
-        <a href="{{route('home')}}" class="btn btn-primary float-right">Voltar</a>
+    <a href="{{route('testes.index')}}" class="btn btn-primary float-right">Voltar</a>
 
         <h2>Caderno de Questões</h2>
 
@@ -11,59 +10,57 @@
     </div>
 </div>
 
-
-<form class="form-group">
-
-    <body>
+<table class=" table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Enunciado</th>
+            <th>Valor da Questão</th>
+            <th>Criado em:</th>
+            <th>Marque sua Resposta</th>
+        </tr>
+    </thead>
+    <tbody>
         @forelse($teste->questoes as $questao)
-        
-            <div class="form-group col-md-6">
-                
-                    <div>
-                        <h5>{{$questao->enunciado}}</h5>
-                    </div>
-                
-
-
-                
-                    <div class="form-group col-md-6">
-                        A: <input type="Radio" name="respostas" id="respostaA" class="form-control" value="a"> {{$questao->respostaA}}
-                    </div>
-                
-                    <div class="form-group col-md-6">
-                        B: <input type="Radio" name="respostas" id="respostaB" class="form-control" value="b">
-                        {{$questao->respostaB}}
-                    </div>
-                
-                    <div class="form-group col-md-6">
-                        C: <input type="Radio" name="respostas" id="respostaC" class="form-control" value="c"> {{$questao->respostaC}}
-                    </div>
-
-                
-                    <div class="form-group ">
-                        D: <input type="radio" name="respostas" id="respostaD" class="form-control" value="d">
-                        {{$questao->respostaD}}
-                    </div>
-
-               
-                    <div class="form-group col-md-6">
-                        E: <input type="Radio" name="respostas" id="respostaE" class="form-control" value="e">
-                        {{$questao->respostaE}}
-                    </div>
-                
-                
-        
+        <tr>
+            <td>{{$questao->id}}</td>
+            <td>{{$questao->enunciado}}</td>
+            <td>{{$questao->valorQuestao}}</td>
+            <td>{{date('d/m/Y H:i:s', strtotime($questao->created_at))}}</td>
+            <td>
+                <div class="form-check form-check-inline">
+                A:&ensp;<input class="form-check-input" type="checkbox" name="respostas" id="respostaA" value="a">
+                <label class="form-check-label" for="respostaA">{{$questao->respostaA}}</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    B:&ensp;<input class="form-check-input" type="checkbox" name="respostas" id="respostaB" value="b">
+                    <label class="form-check-label" for="respostaB">{{$questao->respostaB}}</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    C:&ensp;<input class="form-check-input" type="checkbox" name="respostas" id="respostaC" value="c" >
+                    <label class="form-check-label" for="respostaC">{{$questao->respostaC}}</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    D:&ensp;<input class="form-check-input" type="checkbox" name="respostas" id="respostaD" value="d" >
+                    <label class="form-check-label" for="respostaD">{{$questao->respostaD}}</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    E:&ensp;<input class="form-check-input" type="checkbox" name="respostas" id="respostaE" value="e" >
+                    <label class="form-check-label" for="respostaE">{{$questao->respostaE}}</label>
+                </div>
+            </td>
+        </tr>
         @empty
-        
+        <tr>
+            <td colspan="5" >Nenhum registro encontrado</td>
+        </tr>
         @endforelse
-        
-                    <div class="btn-group">
-                            @csrf
-                            
-                            <button class="btn btn-sm btn-success">Responder Teste</button>
-                        </form>
-                    </div>
-                
-    <body>
-</form>
+        <td>
+            <div class="btn-group">
+                @csrf
+                <button class="btn btn-md btn-primary">Responder Teste</button>
+            </div>
+        </td>
+    </tbody>
+</table>
 @endsection
